@@ -1,0 +1,37 @@
+template(name="baseLayout")
+    
+    .ui.inverted.brown.labeled.icon.menu
+        .ui.container
+            a.header.item(href="/")
+                h2.ui.inverted.header(style="margin-top:8px") Meteor Stock Exchange
+            
+            //-
+                a.item(href="/indexes")
+                    i.icon.ticket
+                    | Indexes
+            a.item(href="/companies")
+                i.suitcase.icon
+                | Companies
+            a.item(href="/traders")
+                i.users.icon
+                | Traders
+            
+            .right.menu
+                if currentUser
+                    .item(style="color: #21ba45 !important;background: #fff;")
+                        i.money.icon
+                        | {{dollar currentUser.cash}}
+                    a.item(href="/traders/#{currentUser.profile.ident}")
+                        i.home.icon
+                        | My page
+                else
+                    a.item(href="/sign-in")
+                        i.sign.in.icon
+                        | Log in
+    
+    
+    .ui.main.container
+        +Template.dynamic(template=content)
+    
+    
+    footer

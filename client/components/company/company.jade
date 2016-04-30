@@ -1,0 +1,19 @@
+template(name="company")
+    
+    with company
+        .ui.large.breadcrumb
+            a.selection(href="/indexes") Market
+            i.right.chevron.icon.divider
+            a.selection(href="/companies") Companies
+            i.right.chevron.icon.divider
+            a.active.selection=name
+        
+        .ui.three.item.menu
+            .item(data-show="trading" class="{{activeView 'trading'}}")
+                | Trading
+            .item(data-show="info" class="{{activeView 'info'}}")
+                | Company information
+            .item(data-show="historical" class="{{activeView 'historical'}}")
+                | Historical data
+        
+    +Template.dynamic(template=view data=company)
